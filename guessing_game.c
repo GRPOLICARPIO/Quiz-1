@@ -8,17 +8,20 @@
 #include <time.h>
 #include <stdlib.h>
 
+// List of choices listed in this void function called after main
 void choices ();
 
 int main ()
 {
-    int max = 10;
-    int choice = 0, inp, random, win = 0, guesses;
+    int max = 10, choice = 0, inp, random, win = 0, guesses;
+
     while(choice != 3)
     {
         choices();
         scanf("%d", &choice);
 
+        // Prompts user to guess the number and gives them as many tries as possible
+        // also gives them hints i.e. too high/too low
         if(choice == 1)
         {
             guesses = 0;
@@ -44,15 +47,15 @@ int main ()
                     win = 1;
                     printf("You guessed correctly!\n\n");
                 }
-                else if(inp == 'q')
+                else if(inp == 'q') // If user inputs q and decides to quit midgame
                 {
                     choices();
                     scanf("%d", &choice);
                 }
-                guesses++;
+                guesses++; // Tracks the number of guesses the user inputs
             }
         }
-        else if(choice == 2)
+        else if(choice == 2) // Allows the user to change the max number as they please
         {
             printf("New max number: ");
             scanf("%d", &max);
@@ -63,13 +66,13 @@ int main ()
                 scanf("%d", &max);
             }
         }
-        else if(choice == 3)
+        else if(choice == 3) // Quit option of the game
         {
             printf("\n");
             printf("Thank you for playing!\n");
             printf("Results: \n");
 
-            if(win == 1)
+            if(win == 1) // End message, showing the game results
             {
                 printf("You won!\n");
                 printf("Number of guesses you made: %d", guesses);
@@ -84,6 +87,7 @@ int main ()
     return 0;
 }
 
+// The list of choices available at the start of the game (main menu)
 void choices ()
 {
     printf("Press 1 to play the game\n");
